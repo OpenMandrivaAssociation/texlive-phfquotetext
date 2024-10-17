@@ -3,7 +3,7 @@ Version:	41869
 Release:	2
 Summary:	Quote verbatim text without white space formatting
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/phfquotetext
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/phfquotetext
 License:	lppl1.3
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/phfquotetext.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/phfquotetext.doc.r%{version}.tar.xz
