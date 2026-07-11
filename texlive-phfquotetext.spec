@@ -1,43 +1,25 @@
-Name:		texlive-phfquotetext
-Version:	41869
-Release:	2
+%global tl_name phfquotetext
+%global tl_revision 41869
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.0
+Release:	%{tl_revision}.1
 Summary:	Quote verbatim text without white space formatting
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/phfquotetext
 License:	lppl1.3
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/phfquotetext.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/phfquotetext.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/phfquotetext.source.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/phfquotetext.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/phfquotetext.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/phfquotetext.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-This package provides an environment for displaying block text
-with special characters, such as verbatim quotes from a referee
-report which may contain pseudo-(La)TeX code. This behaves like
-a verbatim environment, except that it displays its content as
-normal paragraph content, ignoring any white space
-preformatting.
+This package provides an environment for displaying block text with
+special characters, such as verbatim quotes from a referee report which
+may contain pseudo-(La)TeX code. This behaves like a verbatim
+environment, except that it displays its content as normal paragraph
+content, ignoring any white space preformatting.
 
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%doc %{_texmfdistdir}/source/latex/phfquotetext
-%{_texmfdistdir}/tex/latex/phfquotetext
-%doc %{_texmfdistdir}/doc/latex/phfquotetext
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
